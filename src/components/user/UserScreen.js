@@ -1,6 +1,6 @@
 import React from 'react'
 
-const UserScreen = () => {
+export const UserScreen = () => {
   return (
     <div> this is the UserScreen</div>
   )

@@ -37,7 +37,9 @@ export const Sidebar = () => {
             </div>
             <div className="card" >
             <img className="img__profile" src="/user.png" alt="user" />
+
             </div>
+            
             
 
 

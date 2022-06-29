@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
+import {Navigate } from 'react-router-dom';
 import {
     BrowserRouter as Router,
     Switch,
     Redirect
   } from 'react-router-dom';
 
+
+
 import { AuthRouter } from './AuthRouter';
-import { JournalScreen } from '../components/journal/JournalScreen';
+import { MainScreen } from '../components/journal/MainScreen';
 import { firebase } from '../firebase/firebase-config';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
 import { PrivateRoute } from './PrivateRoute.js';
 import { PublicRoute } from './PublicRoute';
 import {  startLoadingNotes } from '../actions/notes';
+import { DashboardRoutes } from './DashboardRoutes';
 
 
 export const AppRouter = () => {
@@ -71,8 +74,8 @@ export const AppRouter = () => {
                     <PrivateRoute 
                         exact
                         isAuthenticated={ isLoggedIn }
-                        path="/"
-                        component={ JournalScreen }
+                        path="/*"
+                        component={ DashboardRoutes }
                     />
 
                     <Redirect to="/auth/login" />

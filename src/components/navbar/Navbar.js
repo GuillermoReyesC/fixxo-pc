@@ -1,61 +1,67 @@
-import react from 'react';
+import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { startLogout } from '../../actions/auth';
 
 import { useSelector } from 'react-redux';
+import TechnicianScreen from '../technician/TechnicianScreen';
+import UserProfile from '../user/UserProfile';
+import UserScreen from '../user/UserScreen';
+import { MainScreen } from '../journal/MainScreen';
 
 export const Navbar = () => {
 
-    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { name } = useSelector( state => state.auth );
-
     const handleLogout = () => {
-        navigate('/auth/login', 
-            {
-                replace: true
-            });
+        dispatch( startLogout() );
     }
 
+  
+
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 
             <Link className="navbar-brand" to="/">
-                inicio
+                Fixxo-pc
             </Link>
 
             <div className="navbar-collapse">
                 <div className="navbar-nav">    
 
                   <NavLink 
-                        className={ ({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '') }
+                        className={ ({ isLoggedIn }) => 'nav-item nav-link ' + (isLoggedIn ? 'active' : '') }
                         to="/technician"
+                        
                     >
                         TechnicianScreen
                     </NavLink>
                     <NavLink
-                        className={ ({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '') }
+                        className={ ({ isLoggedIn }) => 'nav-item nav-link ' + (isLoggedIn ? 'active' : '') }
                         to="/user"
+                        
                     >
                         UserScreen
                     </NavLink>
                     <NavLink
-                        className={ ({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '') }
-                        to="/journal"
+                        className={ ({ isLoggedIn }) => 'nav-item nav-link ' + (isLoggedIn ? 'active' : '') }
+                        to="/user/:id"
+                        
                     >
-                        JournalScreen
+                        UserProfile
                     </NavLink>
-                
                         
 
                 </div>
             </div>
 
-            <div className="navbar-collapse w-100 order-3 dual-collapse2 d-flex justify-content-end">
-                <ul className="navbar-nav ml-auto">
-                    <span className="nav-item nav-link text-info">
-                     { name }
+            <div className="nav-item justify-content-end">
+            <ul className="navbar-nav ml-auto">
+
+            <span className="nav-item nav-link text-white">
+                      Usuario:  {name}
                     </span>
+                    
                 <button className="nav-item nav-link btn" onClick={ handleLogout }>
                     Logout
                 </button>
