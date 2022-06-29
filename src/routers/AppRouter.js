@@ -76,6 +76,7 @@ export const AppRouter = () => {
                         isAuthenticated={ isLoggedIn }
                         path="/*"
                         component={ DashboardRoutes }
+                        
                     />
 
                     <Redirect to="/auth/login" />

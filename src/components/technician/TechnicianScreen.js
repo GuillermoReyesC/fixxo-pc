@@ -10,3 +10,4 @@ export const TechnicianScreen  = () => {
   )
 }
 
+export default TechnicianScreen 

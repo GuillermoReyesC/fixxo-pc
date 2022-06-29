@@ -30,21 +30,21 @@ export const Navbar = () => {
                 <div className="navbar-nav">    
 
                   <NavLink 
-                        className={ ({ isLoggedIn }) => 'nav-item nav-link ' + (isLoggedIn ? 'active' : '') }
+                        className={ ({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '') }
                         to="/technician"
                         
                     >
                         TechnicianScreen
                     </NavLink>
                     <NavLink
-                        className={ ({ isLoggedIn }) => 'nav-item nav-link ' + (isLoggedIn ? 'active' : '') }
+                        className={ ({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '') }
                         to="/user"
                         
                     >
                         UserScreen
                     </NavLink>
                     <NavLink
-                        className={ ({ isLoggedIn }) => 'nav-item nav-link ' + (isLoggedIn ? 'active' : '') }
+                        className={ ({ isActive }) => 'nav-item nav-link ' + (isActive ? 'active' : '') }
                         to="/user/:id"
                         
                     >
